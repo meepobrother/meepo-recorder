@@ -1,0 +1,21 @@
+<div class="header_pikcer">
+    <div class="left" (click)="cancel()">取消</div>
+    <h2>文件上传</h2>
+    <div class="right" (click)="sure()">确定</div>
+</div>
+<div class="main_picker">
+    <img [src]="gifSrc" *ngIf="type ==='image'" />
+    <video [src]="gifSrc" *ngIf="type ==='video'" controls="controls" autoplay>
+        您的浏览器不支持 video 标签。
+    </video>
+    <audio [src]="gifSrc" controls autoplay *ngIf="type==='audio'"></audio>
+    <p *ngIf="type === 'application' || type === 'text'">
+        {{name}}
+    </p>
+    <div class="empty" *ngIf="!gifSrc">
+        尚未选择文件
+    </div>
+</div>
+<a href="javascript:;" class="a-upload">
+    <input type="file" (change)="choosePhoto($event)"> 选择文件
+</a>
